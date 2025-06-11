@@ -13,7 +13,7 @@ export const routes: Routes = [
     {
         path:"create",component:CreateComponent, title:"Create Item -Think Board"
     },
-    {
-        path:"edit",component:EditComponent, title:"Edit Item - Think Board"
-    }
+    // {
+    //     path:"edit",component:EditComponent, title:"Edit Item - Think Board"
+    // }
 ];
