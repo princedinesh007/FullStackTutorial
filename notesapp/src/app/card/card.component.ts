@@ -1,17 +1,18 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
 import { NotesServiceService } from '../notes-service.service';
 import { CommonModule } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-card',
-  imports: [RouterLink,CommonModule],
+  imports: [CommonModule],
   templateUrl: './card.component.html',
   styleUrl: './card.component.css'
 })
 export class CardComponent {
 
-  constructor(public notes:NotesServiceService){}
+  constructor(public notes:NotesServiceService,private toastr: ToastrService){}
 today=new Date();
   notes_data:any;
   ngOnInit()
@@ -22,13 +23,17 @@ today=new Date();
   getNotesData()
   {
     this.notes_data=this.notes.getTodo();
+
   }
   
   deleteNotesData(item:any)
   {
     this.notes.delete(item);
     this.getNotesData();
-    alert("item Delted")
+    this.toastr.error("",'Note Deleted',{
+      positionClass:'toast-center-center',
+    
+    }) 
   }
 
 }
